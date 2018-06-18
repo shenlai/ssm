@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sl.po.productMapper">
+	<!-- 根据id查询user表
+	    resultType:返回值类型，一条数据库记录也就对应实体类的一个对象
+	    parameterType:参数类型，也就是查询条件的类型
+	 -->
+	<select id="selectProductById" resultType="com.sl.po.Product" parameterType="int">
+	 <!-- 这里和普通的sql 查询语句差不多，对于只有一个参数，后面的 #{id}表示占位符，里面不一定要写id,写啥都可以，但是不要空着，如果有多个参数则必须写pojo类里面的属性 -->
+        select * from products where id = #{id}
+	</select>
+
+	<!-- 查询 user 表的所有数据 注意：因为是查询所有数据，所以返回的应该是一个集合,这个集合里面每个元素都是User类型 -->
+	<select id="selectAllProduct" resultType="com.sl.po.Product">
+		select * from products
+	</select>
+
+	
+
+</mapper>

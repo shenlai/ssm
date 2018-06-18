@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-		xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
-		xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" 
-		id="WebApp_ID" 
-		version="3.1">
-		
-  <!-- 配置前端控制器-DispatchServlet  -->
-  <servlet>
-  <servlet-name>bookstore</servlet-name>
-  <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
 
-  <!-- contextConfigLocation不是必须的， 如果不配置contextConfigLocation， springmvc的配置文件默认在：WEB-INF/servlet的name+"-servlet.xml" -->
-  <init-param>
-  		<param-name>contextConfigLocation</param-name>
-        <param-value>classpath:spring/springmvc.xml</param-value>
-  </init-param>
-  </servlet>
-  
-  <!-- 拦截所有请求  解决post乱码 -->
+	<!-- 加载spring容器 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring/applicationContext-*.xml</param-value>
+	</context-param>
+	<!-- 配置前端控制器-DispatchServlet -->
+	<servlet>
+		<servlet-name>bookstore</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+		<!-- contextConfigLocation不是必须的， 如果不配置contextConfigLocation， springmvc的配置文件默认在：WEB-INF/servlet的name+"-servlet.xml" -->
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>classpath:spring/springmvc.xml</param-value>
+		</init-param>
+	</servlet>
+
+	<!-- 拦截所有请求 解决post乱码 -->
 	<filter>
 		<filter-name>CharacterEncodingFilter</filter-name>
 		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -32,10 +36,10 @@
 	</filter-mapping>
 
 
-  
-  <servlet-mapping>
-  <servlet-name>bookstore</servlet-name>
-  <url-pattern>/</url-pattern> <!-- 拦截所有请求，包括静态资源 ，解决办法:在springmvc.xml中添加静态资源的映射-->
-  </servlet-mapping>
- 
+
+	<servlet-mapping>
+		<servlet-name>bookstore</servlet-name>
+		<url-pattern>/</url-pattern> <!-- 拦截所有请求，包括静态资源 ，解决办法:在springmvc.xml中添加静态资源的映射 -->
+	</servlet-mapping>
+
 </web-app>
