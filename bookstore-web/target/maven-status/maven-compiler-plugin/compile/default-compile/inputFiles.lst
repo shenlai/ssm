@@ -1,3 +1,6 @@
-D:\JavaProject\bookstore\bookstore-web\src\main\java\com\sl\controller\HomeController.java
-D:\JavaProject\bookstore\bookstore-web\src\main\java\com\sl\test\TestClient.java
-D:\JavaProject\bookstore\bookstore-web\src\main\java\com\sl\po\Product.java
+D:\JavaProject\bookstore\ssm\bookstore-web\src\main\java\com\sl\controller\HomeController.java
+D:\JavaProject\bookstore\ssm\bookstore-web\src\main\java\com\sl\service\IProductService.java
+D:\JavaProject\bookstore\ssm\bookstore-web\src\main\java\com\sl\dao\ProductDao.java
+D:\JavaProject\bookstore\ssm\bookstore-web\src\main\java\com\sl\test\ProductServiceTest.java
+D:\JavaProject\bookstore\ssm\bookstore-web\src\main\java\com\sl\service\impl\ProductService.java
+D:\JavaProject\bookstore\ssm\bookstore-web\src\main\java\com\sl\po\Product.java

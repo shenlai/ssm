@@ -2,7 +2,7 @@
 <!DOCTYPE mapper 
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sl.po.productMapper">
+<mapper namespace="com.sl.dao.ProductDao">
 	<!-- 根据id查询user表
 	    resultType:返回值类型，一条数据库记录也就对应实体类的一个对象
 	    parameterType:参数类型，也就是查询条件的类型
