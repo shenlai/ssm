@@ -1,0 +1,8 @@
+com\sl\util\MapUtils.class
+com\sl\service\IProductService.class
+com\sl\util\PagerBean.class
+com\sl\dao\ProductDao.class
+com\sl\test\ProductServiceTest.class
+com\sl\controller\HomeController.class
+com\sl\po\Product.class
+com\sl\service\impl\ProductService.class

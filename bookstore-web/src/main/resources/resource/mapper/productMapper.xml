@@ -13,6 +13,14 @@
 	</select>
 
 	<!-- 查询 user 表的所有数据 注意：因为是查询所有数据，所以返回的应该是一个集合,这个集合里面每个元素都是User类型 -->
+	<select id="selectAllProductByPage" parameterType="java.util.Map" resultType="com.sl.po.Product">
+		select * from products
+	 <if test="start != null and pageCount != null">
+        limit #{start,jdbcType=INTEGER},#{end,jdbcType=INTEGER}
+      </if>
+	</select>
+	
+	<!-- 查询 user 表的所有数据 注意：因为是查询所有数据，所以返回的应该是一个集合,这个集合里面每个元素都是User类型 -->
 	<select id="selectAllProduct" resultType="com.sl.po.Product">
 		select * from products
 	</select>

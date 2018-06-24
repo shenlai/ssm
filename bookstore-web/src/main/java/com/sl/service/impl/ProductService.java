@@ -1,6 +1,7 @@
 package com.sl.service.impl;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,16 +17,17 @@ public class ProductService implements IProductService {
 	ProductDao productDao;
 
 	@Override
-	public List<Product> selectAllProduct() {
-		
-		List<Product> list =productDao.selectAllProduct();
-		
+	public List<Product> selectAllProductByPage(Map map) {
+		List<Product> list = productDao.selectAllProductByPage(map);
+
 		return list;
 	}
-	
-	
-	
-	
-	
-	
+
+	@Override
+	public List<Product> selectAllProduct() {
+		List<Product> list = productDao.selectAllProduct();
+
+		return list;
+	}
+
 }

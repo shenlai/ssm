@@ -8,6 +8,7 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <!-- 包扫描器 -->
+    <!-- ProductServiceTest -->
 	<context:component-scan base-package="com.sl.*" />
 	
 	<!-- 加载配置文件 -->
@@ -15,9 +16,6 @@
 	<!-- 数据库连接池 -->
 	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
 		destroy-method="close">
-		<!-- <property name="url" value="jdbc:mysql://localhost:3306/bookstore?useUnicode=true&amp;characterEncoding=UTF-8" 
-			/> <property name="username" value="root" /> <property name="password" value="123456" 
-			/> -->
 		<property name="url" value="${jdbc.url}" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
@@ -33,7 +31,7 @@
 		<!-- mapper文件 -->
 		<property name="mapperLocations">
 			<array>
-				<value>classpath*:/com/sl/mapper/*Mapper.xml</value>
+				<value>classpath:resource/mapper/*Mapper.xml</value>
 			</array>
 		</property>
 	</bean>
