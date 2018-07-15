@@ -11,6 +11,7 @@
 	<context:component-scan base-package="com.sl.controller" />
 	<context:component-scan base-package="com.sl.service" />
 	<context:component-scan base-package="com.sl.dao" />
+	
 	<!-- 注解驱动 -->
 	<mvc:annotation-driven />
 	
@@ -21,10 +22,16 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
+	<!-- 解除servlet对静态资源文件访问的限制 -->
+    <mvc:default-servlet-handler />
+	<!--
+		JSP中引用静态资源方式  href="/css/bootstrap.min.css" 不可以是 href="css/bootstrap.min.css"（相对路径，会转成host/controller/css/bootstrap.min.css） 找不到文件
+	 --> 
 	<!-- 资源映射 -->
 	<mvc:resources location="/WEB-INF/fonts/" mapping="/fonts/**"/>
 	<mvc:resources location="/WEB-INF/image/" mapping="/image/**"/>
 	<mvc:resources location="/WEB-INF/css/" mapping="/css/**"/>
 	<mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>
+	
 	
 </beans>

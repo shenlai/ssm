@@ -14,6 +14,7 @@ import com.sl.util.MapUtils;
 import com.sl.util.PagerBean;
 
 @Controller
+@RequestMapping("/home")
 public class HomeController {
 
 	

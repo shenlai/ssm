@@ -4,31 +4,30 @@
 
 <head>
 <title>Spring MVC</title>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css"
-	href="css/monokai_sublime.min.css">
-<link rel="stylesheet" type="text/css" href="css/popup.min.css">
-<link rel="stylesheet" type="text/css" href="css/screen.css">
+<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="/css/monokai_sublime.min.css">
+<link rel="stylesheet" type="text/css" href="/css/popup.min.css">
+<link rel="stylesheet" type="text/css" href="/css/screen.css">
 
 <!-- <script type="text/javascript" src="js/common.js"></script> -->
 </head>
 
 <body class="home-template">
 	<header class="main-header"
-		style="background-image: url(image/header.jpg)">
+		style="background-image: url(/image/header.jpg)">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12">
 
 					<!-- start logo -->
-					<a class="branding"><img src="image/logo.png"
+					<a class="branding"><img src="/image/logo.png"
 						alt="Ghost 开源博客平台"></a>
 					<!-- end logo -->
 					<h2 class="text-hide">Ghost
 						是一个简洁、强大的写作平台。你只须专注于用文字表达你的想法就好，其余的事情就让 Ghost 来帮你处理吧。</h2>
 
-					<img src="image/header.jpg" alt="Ghost 博客系统" class="hide">
+					<img src="/image/header.jpg" alt="Ghost 博客系统" class="hide">
 				</div>
 			</div>
 		</div>
