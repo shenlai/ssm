@@ -3,6 +3,7 @@ D:\JavaProject\bookstore\ssm\bookstore-web\src\main\java\com\sl\po\SysUserRole.j
 D:\JavaProject\bookstore\ssm\bookstore-web\src\main\java\com\sl\shiro\CustomRealm.java
 D:\JavaProject\bookstore\ssm\bookstore-web\src\main\java\com\sl\po\SysRolePermission.java
 D:\JavaProject\bookstore\ssm\bookstore-web\src\main\java\com\sl\po\SysPermissionExample.java
+D:\JavaProject\bookstore\ssm\bookstore-web\src\main\java\com\sl\controller\UserController.java
 D:\JavaProject\bookstore\ssm\bookstore-web\src\main\java\com\sl\util\MapUtils.java
 D:\JavaProject\bookstore\ssm\bookstore-web\src\main\java\com\sl\po\Product.java
 D:\JavaProject\bookstore\ssm\bookstore-web\src\main\java\com\sl\po\SysRole.java
@@ -22,7 +23,6 @@ D:\JavaProject\bookstore\ssm\bookstore-web\src\main\java\com\sl\po\SysRoleExampl
 D:\JavaProject\bookstore\ssm\bookstore-web\src\main\java\com\sl\dao\SysUserDao.java
 D:\JavaProject\bookstore\ssm\bookstore-web\src\main\java\com\sl\po\User.java
 D:\JavaProject\bookstore\ssm\bookstore-web\src\main\java\com\sl\util\MD5.java
-D:\JavaProject\bookstore\ssm\bookstore-web\src\main\java\com\sl\controller\LoginController.java
 D:\JavaProject\bookstore\ssm\bookstore-web\src\main\java\com\sl\test\ProductServiceTest.java
 D:\JavaProject\bookstore\ssm\bookstore-web\src\main\java\com\sl\po\ActiveUser.java
 D:\JavaProject\bookstore\ssm\bookstore-web\src\main\java\com\sl\po\SysRolePermissionExample.java

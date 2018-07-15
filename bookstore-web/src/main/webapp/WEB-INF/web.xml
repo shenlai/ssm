@@ -4,17 +4,7 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	id="WebApp_ID" version="3.1">
 
-	<!-- 加载spring容器 -->
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>
-			<!-- classpath:spring/applicationContext-*.xml -->	
-			classpath:spring/*.xml
-		</param-value>
-	</context-param>
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
+	
 	<!-- 配置前端控制器-DispatchServlet -->
 	<servlet>
 		<servlet-name>bookstore</servlet-name>
@@ -26,6 +16,17 @@
 			<param-value>classpath:spring/springmvc.xml</param-value>
 		</init-param>
 	</servlet>
+	
+	<!-- 加载spring容器 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:spring/applicationContext-*.xml
+		</param-value>
+	</context-param>
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
 
 	<!-- 拦截所有请求 解决post乱码 -->
 	<filter>
@@ -42,13 +43,35 @@
 	</filter-mapping>
 
 	
-
-
 	<servlet-mapping>
 		<servlet-name>bookstore</servlet-name>
+		 <!--可以配置/：此工程所有的请求全部由springmvc解析，此种方式可以实现RESTful方式，需要特殊处理对静态文件的解析不能由springmvc解析
+        	可以配置*.do或者*.action,所有请求的url扩展名为.do或.action由springmvc解析，此种方法常用
+       		 不可以配置/*,如果配置/*,返回jsp也由springmvc解析，这是不对的-->
 		<url-pattern>/</url-pattern> <!-- 拦截所有请求，包括静态资源 ，解决办法:在springmvc.xml中添加静态资源的映射 -->
 	</servlet-mapping>
 	
+	<!-- 配置由Spring提供的过滤器，用于整合shiro框架 -->
+	<!-- 在项目启动的过程中，当前过滤器会从Spring工厂中提取同名对象 -->
+	<!-- shiro过虑器，DelegatingFilterProxy通过代理模式将spring容器中的bean和filter关联起来 -->
+	<filter>
+		<filter-name>shiroFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<!-- 设置true由servlet容器控制filter的生命周期 -->
+		<init-param>
+			<param-name>targetFilterLifecycle</param-name>
+			<param-value>true</param-value>
+		</init-param>
+		<!-- 设置spring容器filter的bean id，如果不设置则找与filter-name一致的bean-->
+       <init-param>
+           <param-name>targetBeanName</param-name>
+           <param-value>shiroFilter</param-value>
+       </init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>shiroFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 	
 
 </web-app>
