@@ -7,14 +7,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.sl.exception.CustomException;
 
-import org.apache.shiro.authc.IncorrectCredentialsException;
-import org.apache.shiro.authc.UnknownAccountException;
+//import org.apache.shiro.authc.IncorrectCredentialsException;
+//import org.apache.shiro.authc.UnknownAccountException;
 
 @Controller
 @RequestMapping("/user")
 public class UserController
 {
-	
+	/*
  	@RequestMapping(value="/loginsubmit",method = RequestMethod.POST)
     public String loginSubmit(HttpServletRequest request) throws Exception
     {
@@ -40,7 +40,7 @@ public class UserController
         //登录失败返回到login页面
         return "home";
     }
- 	
+ 	*/
  	@RequestMapping("/login")
     public String login() throws Exception
     {

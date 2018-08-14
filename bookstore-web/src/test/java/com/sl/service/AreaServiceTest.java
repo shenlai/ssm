@@ -1,4 +1,4 @@
-package com.sl.dao;
+package com.sl.service;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,15 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sl.BaseTest;
 import com.sl.entity.Area;
+import com.sl.service.impl.AreaService;
 
-public class AreaDaoTest extends BaseTest{
-	
+public class AreaServiceTest extends BaseTest{
 	@Autowired
-	private AreaDao areaDao;
+	private AreaService areaService;
 	
 	@Test
-	public void testQueryArea() throws Exception {
-		List<Area> areaList = areaDao.queryArea();
+	public void testGetAreaList() throws Exception {
+		List<Area> areaList = areaService.getAreaList();
+		
 		assertEquals(4, areaList.size());
 	}
 
