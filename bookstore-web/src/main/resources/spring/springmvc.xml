@@ -7,31 +7,30 @@
         http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <!-- 包扫描器 -->
-	<context:component-scan base-package="com.sl.controller" />
-	<context:component-scan base-package="com.sl.service" />
-	<context:component-scan base-package="com.sl.dao" />
-	
-	<!-- 注解驱动 -->
+	<!-- 1.开启SpringMvc注解驱动 -->
 	<mvc:annotation-driven />
-	
-	<!-- 视图解析器 -->
+
+	<!-- 2.配置视图解析器 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/view/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
-	<!-- 解除servlet对静态资源文件访问的限制 -->
-    <mvc:default-servlet-handler />
+	
 	<!--
 		JSP中引用静态资源方式  href="/css/bootstrap.min.css" 不可以是 href="css/bootstrap.min.css"（相对路径，会转成host/controller/css/bootstrap.min.css） 找不到文件
 	 --> 
-	<!-- 资源映射 -->
+	<!-- 3.资源映射 -->
 	<mvc:resources location="/WEB-INF/fonts/" mapping="/fonts/**"/>
 	<mvc:resources location="/WEB-INF/image/" mapping="/image/**"/>
 	<mvc:resources location="/WEB-INF/css/" mapping="/css/**"/>
 	<mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>
+	<!-- 解除servlet对静态资源文件访问的限制 -->
+    <mvc:default-servlet-handler />
 	
-	
+	  <!-- 4.包扫描器 -->
+	<context:component-scan base-package="com.sl.controller" />
+	<context:component-scan base-package="com.sl.service" />
+	<context:component-scan base-package="com.sl.dao" />
 </beans>

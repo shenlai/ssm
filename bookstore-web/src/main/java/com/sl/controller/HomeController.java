@@ -21,7 +21,7 @@ public class HomeController {
 	@Autowired
 	IProductService productService;
 	
-	//http://localhost:8020/index?page=1
+	//http://localhost:8020/home/index?page=1
 	@RequestMapping("/index") // 处理URL路径中以/index开头的所有请求： 包括 /index/* 和 /index.html
 	public ModelAndView home(int page) {
 		PagerBean pagebean = new PagerBean();

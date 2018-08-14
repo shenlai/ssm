@@ -1,8 +1,13 @@
+com\sl\entity\ShopCategory.class
 com\sl\controller\UserController.class
 com\sl\po\SysPermissionExample$Criteria.class
 com\sl\po\SysUserRoleExample.class
+com\sl\entity\ShopAuthMap.class
+com\sl\entity\ProductCategory.class
 com\sl\controller\HomeController.class
+com\sl\entity\LocalAuth.class
 com\sl\service\ISysService.class
+com\sl\entity\WechatAuth.class
 com\sl\po\SysRoleExample.class
 com\sl\po\ActiveUser.class
 com\sl\service\IProductService.class
@@ -11,12 +16,17 @@ com\sl\po\SysUserExample$Criteria.class
 com\sl\dao\ProductDao.class
 com\sl\po\SysRoleExample$Criteria.class
 com\sl\po\SysRole.class
+com\sl\entity\ProductImg.class
 com\sl\po\SysPermission.class
+com\sl\entity\Area.class
+com\sl\entity\Shop.class
 com\sl\po\Product.class
 com\sl\po\SysRoleExample$Criterion.class
 com\sl\po\SysRolePermissionExample$Criteria.class
 com\sl\po\SysRolePermissionExample$Criterion.class
+com\sl\entity\PersonInfo.class
 com\sl\service\impl\SysService.class
+com\sl\dao\AreaDao.class
 com\sl\po\SysUserExample$Criterion.class
 com\sl\util\MapUtils.class
 com\sl\po\SysRolePermission.class
@@ -26,6 +36,7 @@ com\sl\exception\CustomException.class
 com\sl\po\SysUserExample.class
 com\sl\po\SysUserRole.class
 com\sl\service\impl\ProductService.class
+com\sl\entity\Product.class
 com\sl\po\SysPermissionExample$Criterion.class
 com\sl\util\MD5.class
 com\sl\shiro\CustomRealm.class
@@ -37,6 +48,7 @@ com\sl\po\SysPermissionExample$GeneratedCriteria.class
 com\sl\po\SysUserRoleExample$GeneratedCriteria.class
 com\sl\exception\CustomExceptionResolver.class
 com\sl\po\SysRolePermissionExample$GeneratedCriteria.class
+com\sl\entity\HeadLine.class
 com\sl\po\User.class
 com\sl\po\SysUserRoleExample$Criteria.class
 com\sl\dao\SysUserDao.class
