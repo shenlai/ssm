@@ -26,6 +26,7 @@ import com.sl.enums.ShopStateEnum;
 import com.sl.service.IAreaService;
 import com.sl.service.IShopCategoryService;
 import com.sl.service.IShopService;
+import com.sl.util.CodeUtil;
 import com.sl.util.HttpServletRequestUtil;
 
 @Controller
@@ -46,6 +47,7 @@ public class ShopMgtController {
 	private String shopEdit() {
 		return "shop/shopoperation";
 	}
+	
 	
 	@RequestMapping(value = "/getshopinfo", method = RequestMethod.GET)
 	@ResponseBody
@@ -69,12 +71,16 @@ public class ShopMgtController {
 	}
 	
 	
-	
-	
 	@RequestMapping(value = "/registershop", method = RequestMethod.POST)
 	@ResponseBody
-	private Map<String, Object> registerShop(HttpServletRequest request,String key) {
+	private Map<String, Object> registerShop(HttpServletRequest request) {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
+		if (!CodeUtil.checkVerifyCode(request)) {
+			modelMap.put("success", false);
+			modelMap.put("errMsg", "输入了错误的验证码");
+			return modelMap;
+		}
+		
 		Shop shop =null;
 		//1.接收并转换参数
 		try {
@@ -88,7 +94,6 @@ public class ShopMgtController {
 		}
 		
 		CommonsMultipartFile shopImg=null;
-		
 		CommonsMultipartResolver commonsMultipartResolver = new CommonsMultipartResolver(request.getSession().getServletContext());
 		
 		if(commonsMultipartResolver.isMultipart(request)) {
@@ -103,6 +108,7 @@ public class ShopMgtController {
 		
 		//2.注册店铺
 		if(shop!=null && shopImg!=null) {
+			//Session  TODO
 			PersonInfo owner = new PersonInfo();
 			owner.setUserId(8L);
 			shop.setOwnerId(8L);

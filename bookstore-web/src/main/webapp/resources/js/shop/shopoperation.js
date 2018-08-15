@@ -49,8 +49,14 @@ $(function() {
 		formData.append('shopImg', shopImg);
 		formData.append('shopStr', JSON.stringify(shop));
 		
+		var verifyCodeActual = $('#j_captcha').val();
+		if (!verifyCodeActual) {
+			$.toast('请输入验证码！');
+			return;
+		}
+		formData.append("verifyCodeActual", verifyCodeActual);
 		$.ajax({
-			url : editShopUrl,
+			url : registerShopUrl,
 			type : 'POST',
 			// contentType: "application/x-www-form-urlencoded; charset=utf-8",
 			data : formData,
@@ -67,8 +73,8 @@ $(function() {
 					}
 				} else {
 					$.toast('提交失败！');
-					$('#captcha_img').click();
 				}
+				$("#captcha_img").click();
 			}
 		});
 	});
