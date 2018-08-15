@@ -5,6 +5,7 @@ com\sl\po\SysPermissionExample$Criteria.class
 com\sl\po\SysUserRoleExample.class
 com\sl\entity\ShopAuthMap.class
 com\sl\entity\ProductCategory.class
+com\sl\service\IShopCategoryService.class
 com\sl\controller\HomeController.class
 com\sl\entity\LocalAuth.class
 com\sl\service\ISysService.class
@@ -40,6 +41,7 @@ com\sl\po\SysUserRole.class
 com\sl\service\impl\ProductService.class
 com\sl\entity\Product.class
 com\sl\po\SysPermissionExample$Criterion.class
+com\sl\service\impl\ShopCategoryService.class
 com\sl\util\MD5.class
 com\sl\controller\AreaController.class
 com\sl\po\SysUserExample$GeneratedCriteria.class
