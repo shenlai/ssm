@@ -1,11 +1,19 @@
 $(function() {
-	var initUrl = "/shopadmin/getshopinfo";
-	var registerShopUrl = "/shopadmin/registershop";
+	
+	var shopId = getQueryString('shopId');
+	var shopInfoUrl = "/shop/getshopinfo?shopId=" + shopId;
+	var registerShopUrl = "/shop/registershop";
 	getShopInitInfo();
 	
 	function getShopInitInfo() {
-		$.getJSON(initUrl, function(data) {
+		$.getJSON(shopInfoUrl, function(data) {
 			if (data.success) {
+				var shop = data.shop;
+				$('#shop-name').val(shop.shopName);
+				$('#shop-addr').val(shop.shopAddr);
+				$('#shop-phone').val(shop.phone);
+				$('#shop-desc').val(shop.shopDesc);
+				
 				var shopCategoryHtml = "";
 				var tempAreaHtml = "";
 				data.shopCategoryList.map(function(item, index) {

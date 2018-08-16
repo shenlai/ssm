@@ -2,6 +2,7 @@ package com.sl.service.impl;
 
 import java.io.File;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -62,6 +63,26 @@ public class ShopService implements IShopService {
 		return new ShopDto(ShopStateEnum.CHECK,shop);
 	}
 	
+	@Override
+	public ShopDto getShopList(Shop shopCondition, int pageIndex, int pageSize) {
+		int rowIndex = pageIndex>0?(pageIndex-1)*pageSize:0;
+		List<Shop> list = shopDao.queryShopList(shopCondition, rowIndex, pageSize);
+		int count = shopDao.queryShopCount(shopCondition);
+		ShopDto shopDto = new ShopDto();
+		if(list!=null) {
+			shopDto.setShopList(list);
+			shopDto.setCount(count);
+		}else {
+			shopDto.setState(ShopStateEnum.INNER_ERROR.getState());
+		}
+		return  shopDto;
+	}
+
+	@Override
+	public Shop getByShopId(long shopId) {
+		return shopDao.queryShopById(shopId);
+	}
+
 	
 	private void addShopImg(Shop shop,CommonsMultipartFile shopImg) {
 		//获取shop图片目录相对值路径
@@ -70,5 +91,8 @@ public class ShopService implements IShopService {
 		shop.setShopImg(shopImgAddr);
 		}
 
+
+
+	
 	
 }

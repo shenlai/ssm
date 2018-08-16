@@ -1,8 +1,10 @@
 package com.sl.dao;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Ignore;
 import org.junit.Test;
@@ -45,6 +47,7 @@ public class ShopDaoTest extends BaseTest{
 	}
 	
 	@Test
+	@Ignore
 	public void testUpdateShop() {
 		Shop shop = new Shop();
 		shop.setShopId(30L);
@@ -52,6 +55,22 @@ public class ShopDaoTest extends BaseTest{
 		shop.setLastEditTime(new Date());
 		int effectedNum = shopDao.updateShop(shop);
 		assertEquals(1, effectedNum);
+	}
+	
+	@Test
+	@Ignore
+	public void testQueryShopList() {
+		Shop shop = new Shop();
+		List<Shop> list = shopDao.queryShopList(shop, 3, 5);
+		
+		assertTrue(list.size()>0);
+	}
+	
+	
+	@Test
+	public void testQueryShopById() {
+		Shop shop = shopDao.queryShopById(15L);
+		assertTrue(shop.getShopId()==15);
 	}
 	
 

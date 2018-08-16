@@ -4,6 +4,21 @@
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.sl.dao.ShopDao">
+
+	<resultMap type="com.sl.entity.Shop" id="shopMap">
+		<id column="shop_id" property="shopId"></id>
+		<result column="shop_name" property="shopName"></result>
+		<result column="shop_desc" property="shopDesc"></result>
+		<result column="shop_addr" property="shopAddr"></result>
+		<result column="phone" property="phone"></result>
+		<result column="shop_name" property="shopName"></result>
+		<result column="shop_name" property="shopName"></result>
+		<result column="shop_name" property="shopName"></result>
+		<result column="shop_name" property="shopName"></result>
+		<result column="shop_name" property="shopName"></result>
+		<result column="shop_name" property="shopName"></result>
+	</resultMap>
+
 	<insert id="insertShop" useGeneratedKeys="true" keyColumn="shop_id" keyProperty="shopId">
 		insert into
 		tb_shop(owner_id,area_id,shop_category_id,parent_category_id,
@@ -35,5 +50,72 @@
 		</set>
 		where shop_id=#{shopId}
 	</update>
+	
+	<select id="queryShopList" resultType="com.sl.entity.Shop">
+		select
+		 shop_id,
+		 owner_id,
+		 area_id,
+		 shop_category_id,
+		 parent_category_id,
+		 shop_name,
+		 shop_desc,
+		 shop_addr,
+		 phone,
+		 shop_img,
+		 longitude,
+		 latitude,
+		 priority,
+		 create_time,
+		 last_edit_time,
+		 enable_status,
+		 advice
+		 from tb_shop
+		 order by
+		 priority DESC
+		 limit #{rowIndex},#{pageSize}
+	</select>
+	
+	<select id="queryShopCount" resultType="int">
+		select
+		 count(1)
+		 from tb_shop
+		 <where>
+		 	<if test="shopCondition.shopId!=null">
+		 		and shop_id = #{shopCondition.shopId}
+		 	</if>
+		 	<if test="shopCondition.shopCategory!=null and shopCondition.shopCategory.shopCategoryId!=null">
+		 		and shop_category_id = #{shopCondition.shopCategory.shopCategoryId}
+		 	</if>
+		 	<!-- 等等其他条件 -->
+		 </where>
+	</select>
+	
+	<select id="queryShopById" resultType="com.sl.entity.Shop">
+		<!-- 具体的sql -->
+		SELECT
+		shop_id,
+		 owner_id,
+		 area_id,
+		 shop_category_id,
+		 parent_category_id,
+		 shop_name,
+		 shop_desc,
+		 shop_addr,
+		 phone,
+		 shop_img,
+		 longitude,
+		 latitude,
+		 priority,
+		 create_time,
+		 last_edit_time,
+		 enable_status,
+		 advice
+		FROM
+		tb_shop
+		WHERE
+		shop_id = #{shopId}
+	</select>
+	
 	
 </mapper>
