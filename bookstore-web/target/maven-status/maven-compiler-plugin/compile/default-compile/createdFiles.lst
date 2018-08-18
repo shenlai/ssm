@@ -18,6 +18,7 @@ com\sl\service\IProductService.class
 com\sl\util\PagerBean.class
 com\sl\po\SysUserExample$Criteria.class
 com\sl\util\PathUtil.class
+com\sl\service\impl\ProductCategoryService.class
 com\sl\service\IShopService.class
 com\sl\dao\ProductDao.class
 com\sl\service\impl\ShopService.class
@@ -48,15 +49,19 @@ com\sl\exception\CustomException.class
 com\sl\enums\ShopStateEnum.class
 com\sl\po\SysUserExample.class
 com\sl\po\SysUserRole.class
+com\sl\dto\ComResponse.class
 com\sl\service\impl\ProductService.class
 com\sl\entity\Product.class
 com\sl\po\SysPermissionExample$Criterion.class
 com\sl\service\impl\ShopCategoryService.class
 com\sl\util\MD5.class
 com\sl\dto\ShopDto.class
+com\sl\service\IProductCategoryService.class
 com\sl\controller\AreaController.class
+com\sl\dto\ListResponse.class
 com\sl\po\SysUserExample$GeneratedCriteria.class
 com\sl\test\ProductServiceTest.class
+com\sl\controller\ProductCategoryMgtController.class
 com\sl\po\SysRolePermissionExample.class
 com\sl\po\SysRoleExample$GeneratedCriteria.class
 com\sl\dao\ShopDao.class
