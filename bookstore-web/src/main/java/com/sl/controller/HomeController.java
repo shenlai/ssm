@@ -1,5 +1,6 @@
 package com.sl.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -33,7 +34,8 @@ public class HomeController {
 		
 		Map pager = MapUtils.returnMap(pagebean);
 		pager.putAll(pager);
-		List<Product> list = productService.selectAllProductByPage(pager);
+		//List<Product> list = productService.selectAllProductByPage(pager);
+		List<Product> list = new ArrayList<Product>();
 		String message = "Hello Spring MVC";
 		return new ModelAndView("home", "list", list);
 	}

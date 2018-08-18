@@ -58,9 +58,7 @@ com\sl\util\MD5.class
 com\sl\dto\ShopDto.class
 com\sl\service\IProductCategoryService.class
 com\sl\controller\AreaController.class
-com\sl\dto\ListResponse.class
 com\sl\po\SysUserExample$GeneratedCriteria.class
-com\sl\test\ProductServiceTest.class
 com\sl\controller\ProductCategoryMgtController.class
 com\sl\po\SysRolePermissionExample.class
 com\sl\po\SysRoleExample$GeneratedCriteria.class

@@ -7,7 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sl.dao.ProductDao;
-import com.sl.po.Product;
+import com.sl.dto.PageResponse;
+import com.sl.dto.ShopDto;
+import com.sl.entity.Product;
+import com.sl.entity.Shop;
+import com.sl.enums.ShopStateEnum;
 import com.sl.service.IProductService;
 
 @Service("productService")
@@ -17,17 +21,25 @@ public class ProductService implements IProductService {
 	ProductDao productDao;
 
 	@Override
-	public List<Product> selectAllProductByPage(Map map) {
-		List<Product> list = productDao.selectAllProductByPage(map);
+	public PageResponse<Product> getProductList(Product productCondition, int pageIndex, int pageSize) {
 
-		return list;
+		int rowIndex = pageIndex > 0 ? (pageIndex - 1) * pageSize : 0;
+		List<Product> list = productDao.queryProductList(productCondition, rowIndex, pageSize);
+		int count = productDao.queryProductCount(productCondition);
+
+		return new PageResponse(count, list);
 	}
 
-	@Override
-	public List<Product> selectAllProduct() {
-		List<Product> list = productDao.selectAllProduct();
-
-		return list;
-	}
+	/*
+	 * @Override public List<Product> selectAllProductByPage(Map map) {
+	 * List<Product> list = productDao.selectAllProductByPage(map);
+	 * 
+	 * return list; }
+	 * 
+	 * @Override public List<Product> selectAllProduct() { List<Product> list =
+	 * productDao.selectAllProduct();
+	 * 
+	 * return list; }
+	 */
 
 }

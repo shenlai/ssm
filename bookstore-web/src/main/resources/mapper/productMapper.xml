@@ -3,28 +3,80 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sl.dao.ProductDao">
-	<!-- 根据id查询user表
-	    resultType:返回值类型，一条数据库记录也就对应实体类的一个对象
-	    parameterType:参数类型，也就是查询条件的类型
-	 -->
-	<select id="selectProductById" resultType="com.sl.po.Product" parameterType="int">
-	 <!-- 这里和普通的sql 查询语句差不多，对于只有一个参数，后面的 #{id}表示占位符，里面不一定要写id,写啥都可以，但是不要空着，如果有多个参数则必须写pojo类里面的属性 -->
-        select * from products where id = #{id}
+
+	<select id="queryProductList" resultType="com.sl.entity.Product">
+		select * from
+		tb_product
+		<where>
+			<if test="productCondition!=null and productCondition.productId!=null">
+				and shop_id = #{productCondition.shopId}
+			</if>
+		</where>
+		order by
+		priority DESC
+		limit #{rowIndex},#{pageSize}
+	</select>
+	
+	<select id="queryProductCount" resultType="int">
+		select
+		 count(1)
+		 from tb_product
+		 <where>
+			<if test="productCondition!=null and productCondition.productId!=null">
+				and shop_id = #{productCondition.shopId}
+			</if>
+		</where>
+		 	<!-- 等等其他条件 -->
+	</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- 根据id查询user表 resultType:返回值类型，一条数据库记录也就对应实体类的一个对象 parameterType:参数类型，也就是查询条件的类型 -->
+	<select id="selectProductById" resultType="com.sl.po.Product"
+		parameterType="int">
+		<!-- 这里和普通的sql 查询语句差不多，对于只有一个参数，后面的 #{id}表示占位符，里面不一定要写id,写啥都可以，但是不要空着，如果有多个参数则必须写pojo类里面的属性 -->
+		select * from products where id = #{id}
 	</select>
 
 	<!-- 查询 user 表的所有数据 注意：因为是查询所有数据，所以返回的应该是一个集合,这个集合里面每个元素都是User类型 -->
-	<select id="selectAllProductByPage" parameterType="java.util.Map" resultType="com.sl.po.Product">
+	<select id="selectAllProductByPage" parameterType="java.util.Map"
+		resultType="com.sl.po.Product">
 		select * from products
-	 <if test="start != null and pageCount != null">
-        limit #{start,jdbcType=INTEGER},#{end,jdbcType=INTEGER}
-      </if>
+		<if test="start != null and pageCount != null">
+			limit #{start,jdbcType=INTEGER},#{end,jdbcType=INTEGER}
+		</if>
 	</select>
-	
+
 	<!-- 查询 user 表的所有数据 注意：因为是查询所有数据，所以返回的应该是一个集合,这个集合里面每个元素都是User类型 -->
 	<select id="selectAllProduct" resultType="com.sl.po.Product">
 		select * from products
 	</select>
 
-	
+
 
 </mapper>

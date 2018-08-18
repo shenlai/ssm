@@ -21,11 +21,14 @@ public class Product implements Serializable{
 	private Date lastEditTime;
 	private Integer enableStatus;
 	private Integer point;
+	private Long shopId;
 
+	
 	private List<ProductImg> productImgList;
 	private ProductCategory productCategory;
 	private Shop shop;
 
+	
 	public Long getProductId() {
 		return productId;
 	}
@@ -112,6 +115,14 @@ public class Product implements Serializable{
 
 	public void setPoint(Integer point) {
 		this.point = point;
+	}
+	
+	public Long getShopId() {
+		return shopId;
+	}
+
+	public void setShopId(Long shopId) {
+		this.shopId = shopId;
 	}
 
 	public List<ProductImg> getProductImgList() {

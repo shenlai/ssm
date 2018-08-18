@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sl.dto.ComResponse;
-import com.sl.dto.ListResponse;
+import com.sl.dto.DataResponse;
 import com.sl.entity.ProductCategory;
 import com.sl.service.IProductCategoryService;
 
@@ -31,12 +31,12 @@ public class ProductCategoryMgtController {
 
 	@RequestMapping(value = "getlistbyhopId", method = RequestMethod.GET)
 	@ResponseBody
-	public ListResponse<List<ProductCategory>> getProductCategoryList(int shopId) {
+	public DataResponse<List<ProductCategory>> getProductCategoryList(int shopId) {
 		if (shopId > 0) {
 			List<ProductCategory> list = productCategoryService.getProductCategoryByShopId(shopId);
-			return new ListResponse<List<ProductCategory>>(true, list);
+			return new DataResponse<List<ProductCategory>>(true, list);
 		} else {
-			return new ListResponse<List<ProductCategory>>(false, 0, "参数shopId错误");
+			return new DataResponse<List<ProductCategory>>(false, 0, "参数shopId错误");
 		}
 	}
 

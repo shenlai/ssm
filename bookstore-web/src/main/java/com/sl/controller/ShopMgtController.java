@@ -19,13 +19,16 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sl.dto.PageResponse;
 import com.sl.dto.ShopDto;
 import com.sl.entity.Area;
 import com.sl.entity.PersonInfo;
+import com.sl.entity.Product;
 import com.sl.entity.Shop;
 import com.sl.entity.ShopCategory;
 import com.sl.enums.ShopStateEnum;
 import com.sl.service.IAreaService;
+import com.sl.service.IProductService;
 import com.sl.service.IShopCategoryService;
 import com.sl.service.IShopService;
 import com.sl.util.CodeUtil;
@@ -44,6 +47,10 @@ public class ShopMgtController {
 	@Autowired
 	private IAreaService areaService;
 
+	@Autowired
+	private IProductService productService;
+
+	
 	@RequestMapping(value = "/shopoperation", method = RequestMethod.GET)
 	private String shopEdit() {
 		return "shop/shopoperation";
@@ -54,11 +61,43 @@ public class ShopMgtController {
 		return "shop/shoplist";
 
 	}
-	
+
 	@RequestMapping(value = "/shopmanage", method = RequestMethod.GET)
 	private String shopManage() {
 		return "shop/shopmanage";
 
+	}
+
+	@RequestMapping(value = "/productlist", method = RequestMethod.GET)
+	private String productList() {
+		return "shop/productlist";
+
+	}
+
+	/**
+	 * @param request
+	 * @return
+	 */
+	@RequestMapping(value = "/getproductlist", method = RequestMethod.GET)
+	@ResponseBody
+	private PageResponse<Product> getProductList(HttpServletRequest request) {
+		PageResponse<Product> response = new PageResponse<Product>();
+		
+		int pageIndex = HttpServletRequestUtil.getInt(request, "page");
+		int pageSize = HttpServletRequestUtil.getInt(request, "rows");
+		Long shopId = HttpServletRequestUtil.getLong(request, "shopId");
+		pageIndex = pageIndex <= 0 ? 1 : pageIndex;
+		pageSize = pageSize <= 0 ? 20 : pageSize;
+		if (pageIndex > 0 && pageSize > 0) {
+			
+			Product productCondition = new Product();
+			productCondition.setShopId(shopId);
+			response = productService.getProductList(productCondition, pageIndex, pageSize);
+		
+		} else {
+			response = new PageResponse<Product>(false,0,"参数错误");
+		}
+		return response;
 	}
 
 	// 店铺列表
@@ -124,19 +163,19 @@ public class ShopMgtController {
 	@ResponseBody
 	private Map<String, Object> getShopInfo(int shopId) {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
-		
-		if(shopId<=0) {
+
+		if (shopId <= 0) {
 			modelMap.put("success", false);
 			modelMap.put("errMsg", "shopId不能小于0");
 		}
-		Shop shop= new Shop();
+		Shop shop = new Shop();
 		List<ShopCategory> shopCategoryList = new ArrayList<ShopCategory>();
 		List<Area> areaList = new ArrayList<Area>();
 		try {
-			shopCategoryList = shopCategoryService.getShopCategoryList((long)shopId);
+			shopCategoryList = shopCategoryService.getShopCategoryList((long) shopId);
 			areaList = areaService.getAreaList();
 			shop = shopService.getByShopId(shopId);
-			
+
 			modelMap.put("shop", shop);
 			modelMap.put("success", true);
 			modelMap.put("areaList", areaList);

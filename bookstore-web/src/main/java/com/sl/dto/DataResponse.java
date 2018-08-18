@@ -1,18 +1,18 @@
 package com.sl.dto;
 
-public class ListResponse<T> extends ComResponse {
+public class DataResponse<T> extends ComResponse {
 
 	private T data;
 
-	public ListResponse() {
+	public DataResponse() {
 	}
 	
-	public ListResponse(boolean success, T data) {
+	public DataResponse(boolean success, T data) {
 		super.setSuccess(true);
 		this.data = data;
 	}
 
-	public ListResponse(boolean success, int errorCode, String errorMsg) {
+	public DataResponse(boolean success, int errorCode, String errorMsg) {
 		super(success,errorCode,errorMsg);
 	}
 
