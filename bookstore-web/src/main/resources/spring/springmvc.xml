@@ -44,6 +44,7 @@
 
 	<!-- 4.包扫描器 -->
 	<context:component-scan base-package="com.sl.controller" />
+	<context:component-scan base-package="com.sl.controller.*" />
 	<context:component-scan base-package="com.sl.service" />
 	<context:component-scan base-package="com.sl.dao" />
 </beans>

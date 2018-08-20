@@ -29,6 +29,7 @@ com\sl\po\SysPermission.class
 com\sl\entity\Area.class
 com\sl\entity\Shop.class
 com\sl\po\Product.class
+com\sl\controller\frontend\FrontendController.class
 com\sl\dao\ShopCategoryDao.class
 com\sl\po\SysRoleExample$Criterion.class
 com\sl\po\SysRolePermissionExample$Criteria.class
@@ -45,11 +46,13 @@ com\sl\util\MapUtils.class
 com\sl\po\SysRolePermission.class
 com\sl\po\SysUser.class
 com\sl\po\SysUserRoleExample$Criterion.class
+com\sl\service\IHeadLineService.class
 com\sl\exception\CustomException.class
 com\sl\enums\ShopStateEnum.class
 com\sl\po\SysUserExample.class
 com\sl\po\SysUserRole.class
 com\sl\dto\ComResponse.class
+com\sl\dao\HeadLineDao.class
 com\sl\service\impl\ProductService.class
 com\sl\entity\Product.class
 com\sl\po\SysPermissionExample$Criterion.class
@@ -63,6 +66,7 @@ com\sl\controller\ProductCategoryMgtController.class
 com\sl\po\SysRolePermissionExample.class
 com\sl\po\SysRoleExample$GeneratedCriteria.class
 com\sl\dao\ShopDao.class
+com\sl\service\impl\HeadLineService.class
 com\sl\po\SysPermissionExample$GeneratedCriteria.class
 com\sl\po\SysUserRoleExample$GeneratedCriteria.class
 com\sl\exception\CustomExceptionResolver.class

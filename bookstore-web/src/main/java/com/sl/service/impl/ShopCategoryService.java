@@ -23,6 +23,19 @@ public class ShopCategoryService implements IShopCategoryService {
 		
 		return shopCategoryDao.queryShopCategory(condition);
 	}
+
+
+	@Override
+	public List<ShopCategory> getFirstLevelShopCategoryList() {
+		
+		ShopCategory shopCategoryCondition = new ShopCategory();
+		
+		// 当shopCategoryId不为空的时候，查询的条件会变为 where parent_id is null
+		shopCategoryCondition.setShopCategoryId(-1L);
+		List<ShopCategory> shopCategoryList = shopCategoryDao.queryShopCategory(shopCategoryCondition);
+		
+		return shopCategoryList;
+	}
 	
 
 }
