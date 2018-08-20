@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
+import com.sl.dto.PageResponse;
 import com.sl.dto.ShopDto;
+import com.sl.entity.Product;
 import com.sl.entity.Shop;
 
 public interface IShopService {
@@ -14,5 +16,5 @@ public interface IShopService {
 	ShopDto addShop(Shop shop, CommonsMultipartFile shopImg);
 	
 	
-	ShopDto getShopList(Shop shopCondition, int pageIndex, int pageSize);
+	PageResponse<Shop> getShopList(Shop shopCondition, int pageIndex, int pageSize);
 }

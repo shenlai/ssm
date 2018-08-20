@@ -42,7 +42,9 @@ public class HttpServletRequestUtil {
 
 	public static String getString(HttpServletRequest request, String name) {
 		try {
-			String result = request.getParameter(name);
+			//中文乱码问题
+			String result = new String(request.getParameter(name).getBytes("iso-8859-1"), "utf-8");
+			//String result = request.getParameter(name);
 			if (result != null) {
 				result = result.trim();
 			}

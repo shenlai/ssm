@@ -128,7 +128,7 @@ public class ShopMgtController {
 	@ResponseBody
 	private Map<String, Object> listShops(HttpServletRequest request) {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
-		ShopDto shops = null;
+		PageResponse<Shop> shopListResponse = new PageResponse<Shop>();
 		int pageIndex = HttpServletRequestUtil.getInt(request, "page");
 		int pageSize = HttpServletRequestUtil.getInt(request, "rows");
 		pageIndex = pageIndex <= 0 ? 1 : pageIndex;
@@ -155,15 +155,15 @@ public class ShopMgtController {
 				}
 			}
 			try {
-				shops = shopService.getShopList(shopCondition, pageIndex, pageSize);
+				shopListResponse = shopService.getShopList(shopCondition, pageIndex, pageSize);
 			} catch (Exception e) {
 				modelMap.put("success", false);
 				modelMap.put("errMsg", e.toString());
 				return modelMap;
 			}
-			if (shops.getShopList() != null) {
-				modelMap.put("rows", shops.getShopList());
-				modelMap.put("total", shops.getCount());
+			if (shopListResponse.getDataList() != null) {
+				modelMap.put("rows", shopListResponse.getDataList());
+				modelMap.put("total", shopListResponse.getTotalCount());
 				modelMap.put("success", true);
 			} else {
 				modelMap.put("rows", new ArrayList<Shop>());

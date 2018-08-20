@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.sl.dao.ShopDao;
+import com.sl.dto.PageResponse;
 import com.sl.dto.ShopDto;
 import com.sl.entity.Shop;
 import com.sl.enums.ShopStateEnum;
@@ -64,18 +65,19 @@ public class ShopService implements IShopService {
 	}
 	
 	@Override
-	public ShopDto getShopList(Shop shopCondition, int pageIndex, int pageSize) {
+	public PageResponse<Shop> getShopList(Shop shopCondition, int pageIndex, int pageSize) {
 		int rowIndex = pageIndex>0?(pageIndex-1)*pageSize:0;
 		List<Shop> list = shopDao.queryShopList(shopCondition, rowIndex, pageSize);
 		int count = shopDao.queryShopCount(shopCondition);
-		ShopDto shopDto = new ShopDto();
+		PageResponse<Shop> response = new PageResponse<Shop>();
 		if(list!=null) {
-			shopDto.setShopList(list);
-			shopDto.setCount(count);
+			response.setDataList(list);
+			response.setTotalCount(count);
 		}else {
-			shopDto.setState(ShopStateEnum.INNER_ERROR.getState());
+			response.setSuccess(false);
+			response.setErrorMsg("查询失败");
 		}
-		return  shopDto;
+		return  response;
 	}
 
 	@Override

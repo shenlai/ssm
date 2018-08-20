@@ -38,9 +38,10 @@ $(function() {
         $.openPanel('#panel-left-demo');
     });
 
+    //店铺列表
     $('.row').on('click', '.shop-classify', function (e) {
         var shopCategoryId = e.currentTarget.dataset.category;
-        var newUrl = '/myo2o/frontend/shoplist?parentId=' + shopCategoryId;
+        var newUrl = '/frontend/shoplist?parentId=' + shopCategoryId;
         window.location.href = newUrl;
     });
 

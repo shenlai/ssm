@@ -71,6 +71,27 @@
 		 enable_status,
 		 advice
 		 from tb_shop
+		 <where>
+		 	<if test="shopCondition.shopId!=null">
+		 		and shop_id = #{shopCondition.shopId}
+		 	</if>
+		 	<if test="shopCondition.area!=null and shopCondition.area.areaId!=null">
+				and area_id =
+				#{shopCondition.area.areaId}
+			</if>
+		 	<if test="shopCondition.shopCategoryId>0">
+		 		and shop_category_id = #{shopCondition.shopCategoryId}
+		 	</if>
+		 	<if test="shopCondition.parentCategory!=null
+				 and shopCondition.parentCategory.shopCategoryId!=null">
+				and parent_category_id =
+				#{shopCondition.parentCategory.shopCategoryId}
+			</if>
+			<if test="shopCondition.shopName!=null">
+				and shop_name like '%${shopCondition.shopName}%'
+			</if>
+		 	<!-- 等等其他条件 -->
+		 </where>
 		 order by
 		 priority DESC
 		 limit #{rowIndex},#{pageSize}
@@ -80,13 +101,25 @@
 		select
 		 count(1)
 		 from tb_shop
-		 <where>
+		  <where>
 		 	<if test="shopCondition.shopId!=null">
 		 		and shop_id = #{shopCondition.shopId}
 		 	</if>
-		 	<if test="shopCondition.shopCategory!=null and shopCondition.shopCategory.shopCategoryId!=null">
-		 		and shop_category_id = #{shopCondition.shopCategory.shopCategoryId}
+		 	<if test="shopCondition.area!=null and shopCondition.area.areaId!=null">
+				and area_id =
+				#{shopCondition.area.areaId}
+			</if>
+		 	<if test="shopCondition.shopCategoryId>0">
+		 		and shop_category_id = #{shopCondition.shopCategoryId}
 		 	</if>
+		 	<if test="shopCondition.parentCategory!=null
+				 and shopCondition.parentCategory.shopCategoryId!=null">
+				and parent_category_id =
+				#{shopCondition.parentCategory.shopCategoryId}
+			</if>
+			<if test="shopCondition.shopName!=null">
+				and shop_name like '%${shopCondition.shopName}%'
+			</if>
 		 	<!-- 等等其他条件 -->
 		 </where>
 	</select>
