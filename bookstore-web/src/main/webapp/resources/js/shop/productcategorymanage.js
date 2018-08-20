@@ -1,6 +1,6 @@
 $(function() {
 	var shopId = 20;
-	var listUrl = '/productcategory/getlistbyhopId?shopId=' + shopId;
+	var listUrl = '/productcategory/getlistbyshopId?shopId=' + shopId;
 	var addUrl = '/productcategory/addproductcategorys';
 	var deleteUrl = '/productcategory/removeproductcategory';
 

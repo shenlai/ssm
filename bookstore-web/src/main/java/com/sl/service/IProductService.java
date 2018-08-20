@@ -12,5 +12,5 @@ public interface IProductService {
 	
 	PageResponse<Product> getProductList(Product productCondition, int pageIndex, int pageSize);
 	
-	
+	Product getProductByProductId(long productId);
 }

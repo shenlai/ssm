@@ -22,6 +22,7 @@ public class Product implements Serializable{
 	private Integer enableStatus;
 	private Integer point;
 	private Long shopId;
+	private Long productCategoryId;
 
 	
 	private List<ProductImg> productImgList;
@@ -147,6 +148,14 @@ public class Product implements Serializable{
 
 	public void setShop(Shop shop) {
 		this.shop = shop;
+	}
+
+	public Long getProductCategoryId() {
+		return productCategoryId;
+	}
+
+	public void setProductCategoryId(Long productCategoryId) {
+		this.productCategoryId = productCategoryId;
 	}
 
 }

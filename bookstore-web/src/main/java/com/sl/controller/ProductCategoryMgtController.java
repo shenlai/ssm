@@ -29,7 +29,7 @@ public class ProductCategoryMgtController {
 		return "shop/productcategorymanage";
 	}
 
-	@RequestMapping(value = "getlistbyhopId", method = RequestMethod.GET)
+	@RequestMapping(value = "getlistbyshopId", method = RequestMethod.GET)
 	@ResponseBody
 	public DataResponse<List<ProductCategory>> getProductCategoryList(int shopId) {
 		if (shopId > 0) {

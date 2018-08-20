@@ -19,6 +19,7 @@ import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.sl.dto.DataResponse;
 import com.sl.dto.PageResponse;
 import com.sl.dto.ShopDto;
 import com.sl.entity.Area;
@@ -73,8 +74,25 @@ public class ShopMgtController {
 		return "shop/productlist";
 
 	}
+	
+	@RequestMapping(value = "/productedit", method = RequestMethod.GET)
+	private String productEdit() {
+		return "shop/productedit";
+	}
 
+	@RequestMapping(value = "/getproductbyid", method = RequestMethod.GET)
+	@ResponseBody
+	private DataResponse<Product> getProductbyId(long productId){
+		if(productId<=0) {
+			return new DataResponse<Product>(false,0,"参数小于0");
+		}else{
+			Product product = productService.getProductByProductId(productId);
+			return new DataResponse<Product>(true,product);
+		}
+	}
+	
 	/**
+	 * 产品列表
 	 * @param request
 	 * @return
 	 */
@@ -100,8 +118,9 @@ public class ShopMgtController {
 		return response;
 	}
 
-	// 店铺列表
+	
 	/**
+	 * 店铺列表
 	 * @param request
 	 * @return
 	 */

@@ -79,21 +79,16 @@ $(function() {
 		});
 	}
 
-	$('.product-wrap')
-			.on(
-					'click',
-					'a',
-					function(e) {
+	//编辑-下架-预览
+	$('.product-wrap').on('click','a',function(e) {
 						var target = $(e.currentTarget);
 						if (target.hasClass('edit')) {
-							window.location.href = '/myo2o/shop/productedit?productId='
-									+ e.currentTarget.dataset.id;
+							window.location.href = '/shop/productedit?productId='+ e.currentTarget.dataset.id;
 						} else if (target.hasClass('delete')) {
 							deleteItem(e.currentTarget.dataset.id,
 									e.currentTarget.dataset.status);
 						} else if (target.hasClass('preview')) {
-							window.location.href = '/myo2o/frontend/productdetail?productId='
-									+ e.currentTarget.dataset.id;
+							window.location.href = '/myo2o/frontend/productdetail?productId='+ e.currentTarget.dataset.id;
 						}
 					});
 

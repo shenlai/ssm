@@ -30,6 +30,11 @@ public class ProductService implements IProductService {
 		return new PageResponse(count, list);
 	}
 
+	@Override
+	public Product getProductByProductId(long productId) {
+		return productDao.queryProductByProductId(productId);
+	}
+
 	/*
 	 * @Override public List<Product> selectAllProductByPage(Map map) {
 	 * List<Product> list = productDao.selectAllProductByPage(map);

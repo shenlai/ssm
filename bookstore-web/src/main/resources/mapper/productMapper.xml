@@ -28,6 +28,13 @@
 		</where>
 		 	<!-- 等等其他条件 -->
 	</select>
+	
+	
+	<select id="queryProductByProductId" resultType="com.sl.entity.Product">
+		select * from
+		tb_product
+		where product_id=#{id}
+	</select>
 
 
 
