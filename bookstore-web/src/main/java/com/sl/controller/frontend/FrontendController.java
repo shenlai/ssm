@@ -1,5 +1,6 @@
 package com.sl.controller.frontend;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.sl.dto.PageResponse;
 import com.sl.entity.Area;
 import com.sl.entity.HeadLine;
@@ -97,10 +99,12 @@ public class FrontendController {
 	
 	/**
 	 * 首页-按分类获取店铺列表-搜索条件框
+	 * @throws IOException 
+	 * @throws JsonProcessingException 
 	 */
 	@RequestMapping(value = "/listshopspageinfo", method = RequestMethod.GET)
 	@ResponseBody
-	private Map<String,Object> listshopspageinfo(HttpServletRequest request){
+	private Map<String,Object> listshopspageinfo(HttpServletRequest request) throws JsonProcessingException, IOException{
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 		long parentId = HttpServletRequestUtil.getLong(request, "parentId");
 		List<ShopCategory> shopCategoryList = null;

@@ -8,7 +8,7 @@
 		select * from
 		tb_product
 		<where>
-			<if test="productCondition!=null and productCondition.productId!=null">
+			<if test="productCondition!=null and productCondition.shopId!=null">
 				and shop_id = #{productCondition.shopId}
 			</if>
 		</where>
