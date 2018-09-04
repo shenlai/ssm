@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.junit.runner.Request;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -135,6 +136,8 @@ public class ShopMgtController {
 		pageSize = pageSize <= 0 ? 20 : pageSize;
 		if (pageIndex > 0 && pageSize > 0) {
 			Shop shopCondition = new Shop();
+			//设置用户信息，获取当前用户的店铺
+			//shopCondition.setOwnerId(12L);
 			int enableStatus = HttpServletRequestUtil.getInt(request, "enableStatus");
 			if (enableStatus >= 0) {
 				shopCondition.setEnableStatus(enableStatus);
@@ -164,6 +167,8 @@ public class ShopMgtController {
 			if (shopListResponse.getDataList() != null) {
 				modelMap.put("rows", shopListResponse.getDataList());
 				modelMap.put("total", shopListResponse.getTotalCount());
+				//将当前用户的店铺列表存入session
+				request.getSession().setAttribute("shopList", shopListResponse.getDataList());
 				modelMap.put("success", true);
 			} else {
 				modelMap.put("rows", new ArrayList<Shop>());
@@ -180,10 +185,12 @@ public class ShopMgtController {
 
 	@RequestMapping(value = "/getshopinfo", method = RequestMethod.GET)
 	@ResponseBody
-	private Map<String, Object> getShopInfo(int shopId) {
+	private Map<String, Object> getShopInfo(int shopId,HttpServletRequest request) {
 		Map<String, Object> modelMap = new HashMap<String, Object>();
 
 		if (shopId <= 0) {
+			
+			//Object currentShop =  request.getSession().getAttribute("currentShop");
 			modelMap.put("success", false);
 			modelMap.put("errMsg", "shopId不能小于0");
 		}
@@ -199,6 +206,9 @@ public class ShopMgtController {
 			modelMap.put("success", true);
 			modelMap.put("areaList", areaList);
 			modelMap.put("shopCategoryList", shopCategoryList);
+			
+			//设置session
+			request.getSession().setAttribute("currentShop", shop);
 		} catch (Exception e) {
 			modelMap.put("success", true);
 			modelMap.put("errMsg", e.getMessage());

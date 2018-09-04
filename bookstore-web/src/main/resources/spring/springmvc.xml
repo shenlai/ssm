@@ -4,7 +4,7 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- 1.开启SpringMvc注解驱动 -->
@@ -24,14 +24,15 @@
 		<property name="prefix" value="/WEB-INF/view/" />
 		<property name="suffix" value=".html" />
 	</bean>
-	<!--文件上传解析器  -->
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	<!--文件上传解析器 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="defaultEncoding" value="utf-8"></property>
 		<!-- 1024*1024*20 = 20M -->
 		<property name="maxUploadSize" value="20971520"></property>
 		<property name="maxInMemorySize" value="20971520"></property>
 	</bean>
-	
+
 	<!-- JSP中引用静态资源方式 href="/css/bootstrap.min.css" 不可以是 href="css/bootstrap.min.css"（相对路径，会转成host/controller/css/bootstrap.min.css） 
 		找不到文件 -->
 	<!-- 3.资源映射 -->
@@ -47,4 +48,21 @@
 	<context:component-scan base-package="com.sl.controller.*" />
 	<context:component-scan base-package="com.sl.service" />
 	<context:component-scan base-package="com.sl.dao" />
+
+	<mvc:interceptors>
+		<mvc:interceptor>
+			<!-- 指定拦截作用域 -->
+			<mvc:mapping path="/shop/*" />
+			<!-- 排除 -->
+			<mvc:exclude-mapping path="/shop/getshoplist" />
+			<bean class="com.sl.interceptor.ShopPermissionInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+
+
+
+
+
+
+
 </beans>
