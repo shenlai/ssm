@@ -59,10 +59,7 @@
 		</mvc:interceptor>
 	</mvc:interceptors>
 
-
-
-
-
-
+	<!-- 默认跳转首页 -->
+	<mvc:view-controller path="/" view-name="redirect:/frontend/index" />
 
 </beans>
